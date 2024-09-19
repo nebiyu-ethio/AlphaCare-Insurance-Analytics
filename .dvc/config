@@ -1,0 +1,4 @@
+[core]
+    remote = localstorage
+['remote "localstorage"']
+    url = /home/neba/Desktop/Data_Engineering/KAMI/Week-3/storage
