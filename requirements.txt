@@ -58,3 +58,5 @@ sqlalchemy
 psycopg2-binary
 python-dotenv
 matplotlib==3.9.2
+xgboost
+shap
