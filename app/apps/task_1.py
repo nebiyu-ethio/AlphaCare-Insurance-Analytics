@@ -10,8 +10,8 @@ from scripts.data_processing import *
 
 def app():
     # Load Data
-    zip_file_path = 'MachineLearningRating_v3.zip'
-    csv_file_name = 'MachineLearningRating_v3.txt'  # Name of the file inside the zip
+    zip_file_path = os.path.abspath('MachineLearningRating_v3.zip')
+    csv_file_name =  os.path.abspath('MachineLearningRating_v3.txt')  # Name of the file inside the zip
 
     with zipfile.ZipFile(zip_file_path, 'r') as z:
         with z.open(csv_file_name) as f:
