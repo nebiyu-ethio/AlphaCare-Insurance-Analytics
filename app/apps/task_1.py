@@ -197,35 +197,3 @@ def app():
     # 
     # - There are significant outliers in TotalPremium and TotalClaims, with some extremely high values.
     # - SumInsured and CalculatedPremiumPerTerm also show outliers, though they are less extreme compared to TotalPremium and TotalClaims.
-
-    # Visualization
-    plt.figure(figsize=(12, 6))
-    sns.scatterplot(data, x='TotalPremium', y='TotalClaims', hue='VehicleType', size='SumInsured', sizes=(20, 200))
-    plt.title('Risk vs Premium by Vehicle Type')
-    plt.xlabel('Total Premium')
-    plt.ylabel('Total Claims')
-    plt.legend(loc='upper center')
-    plt.show()
-    plt.close()
-    # - The majority of the data points are clustered at the lower end of both the TotalPremium and TotalClaims axes, indicating that most vehicles pay relatively low premiums and incur low total claims.  
-    # - Medium Commercial, Heavy Commercial, and Light Commercial vehicles are scattered more sporadically among the lower premium and claim amounts.  
-    # - There are instances where passenger vehicles show high premiums and relatively high claims.
-
-    plt.figure(figsize=(12, 6))
-    sns.boxplot(data, x='Gender', y='TotalPremium', hue='MaritalStatus')
-    plt.title('Premium Distribution by Gender and Marital Status')
-    plt.show()
-    plt.close()
-    
-    # Outlier Capping Using IQR Method
-    data_capped = cap_outliers(data, numerical_columns)
-    outlier_box_plots(data_capped[numerical_columns])
-    
-    # **===> Summary of Findings:**
-    # 
-    # - Risk factors vary across provinces and demographics.
-    # - Premium pricing patterns highlight differences based on geography and customer characteristics.
-    # - Claims distribution shows a relationship with premiums, with certain regions and demographics exhibiting higher claims relative to premiums.
-    # - Geographic trends reveal variations in risk and pricing across different provinces.
-    # - Vehicle characteristics, such as type and make, significantly influence both premiums and claims.
-    # - Additional insights may be valuable for optimizing marketing strategies and identifying low-risk targets for better risk management.
