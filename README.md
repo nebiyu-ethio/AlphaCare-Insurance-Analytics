@@ -81,3 +81,7 @@ jupyter notebook
 ```
 
 ### 3. Open the notebooks in the `notebooks/` directory to view or run the analyses.
+
+## License
+
+This project is licensed under the MIT License.
