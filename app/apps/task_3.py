@@ -54,6 +54,7 @@ def app():
     plt.title('Distribution of Risk by Province')
     plt.xticks(rotation=45)
     plt.show()
+    plt.close()
     
     # **2. Test for risk differences between zip codes**
     # - **Null Hypothesis (H₀)**: TThere are no risk differences between zip codes(interms of TotalPremium)
@@ -97,6 +98,7 @@ def app():
     sns.barplot(x='Gender', y='TotalPremium', data=filtered_data)
     plt.title(' Risk difference by Gender')
     plt.show()
+    plt.close()
 
     # **===> Observation**
     #  - Since the p-value is much smaller than the typical alpha level (0.05), the test results correctly indicate the rejection of the null hypothesis. Even though the risk difference appears small visually, statistical significance can still be present due to factors such as sample size or data distribution. While the p-value suggests that the difference is statistically significant, the actual difference in the means seems minimal.
@@ -110,3 +112,4 @@ def app():
     plt.xlabel('Risk (Total Claims / Sum Insured)')
     plt.ylabel('Premium Rate (Total Premium / Sum Insured)')
     plt.show()
+    plt.close()

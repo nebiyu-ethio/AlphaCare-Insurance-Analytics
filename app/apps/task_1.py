@@ -109,6 +109,7 @@ def app():
     print("Histograms for Numerical Columns:")
     for col in numerical_columns:
         plot_histogram(data, col)
+        plt.close()
 
     # **Distribution of categorical columns**
     categorical_columns=['Province', 'VehicleType',  'Gender', 'MaritalStatus', 'NewVehicle', 'RegistrationYear','Citizenship' ]
@@ -116,6 +117,7 @@ def app():
     # Plot bar charts for categorical columns
     for col in categorical_columns:
         plot_bar_chart(data, col)
+        plt.close()
 
     # **Insights from the univariate analysis of numeric columns:**<br>
     # 
@@ -127,16 +129,20 @@ def app():
     # 
     # Use scatter plots and correlation heatmaps to understand relationships between variables.
     plot_scatter(data, 'TotalPremium', 'TotalClaims')
+    plt.close()
 
     plot_scatter(data, 'NewVehicle', 'Province')
+    plt.close()
 
     # **Examine the correlation between different attributes in our dataset.**
     plot_correlation_heatmap(data, ['TotalPremium', 'TotalClaims'])
+    plt.close()
 
     # ===> **Based on the plot, it can be observed that the correlation between TotalPremium and TotalClaims is positive but weak, with a correlation coefficient of 0.12. This suggests that higher premiums generally result in higher claims, though there is significant variability.**
 
     # Correlation between numerical columns
     plot_correlation_heatmap(data, numerical_columns)
+    plt.close()
 
     # **===> From the correlation heatmap, we can see that:**
     # 
@@ -146,6 +152,7 @@ def app():
 
     # Multivariate Analysis
     plot_scatter(data, 'TotalPremium', 'TotalClaims', 'Province')
+    plt.close()
 
     # Correlation matrix
     correlation_matrix_province = data.groupby('Province')[['TotalPremium', 'TotalClaims']].corr().unstack()['TotalClaims']['TotalPremium']
@@ -163,6 +170,7 @@ def app():
 
     columns_data = pd.get_dummies(columns_data, columns=['MaritalStatus', 'Gender'])
     plot_correlation_heatmap(columns_data, columns_data.columns)
+    plt.close()
     # The correlation between "Gender_Female" and "TotalPremium" is approximately -0.00074. This indicates a very weak negative correlation, suggesting that being female has almost no direct linear impact on the total premium paid.<br>
     # **Correlation with Gender_Male:** Similarly, the correlation between "Gender_Male" and "TotalPremium" is approximately 0.00087, indicating an almost negligible positive correlation. This means being male also shows no significant linear effect on the total premium.<br>
     # **===> Overall Analysis:** There seems to be almost no difference between male and female customers regarding the total premium paid.<br>
@@ -180,6 +188,7 @@ def app():
     # Outlier Detection
     for col in ['TotalPremium', 'TotalClaims']:
         plot_boxplot(data, 'Province', col)
+        plt.close()
 
     data_numerical_cols = data[numerical_columns]
     outlier_box_plots(data_numerical_cols)
@@ -197,6 +206,7 @@ def app():
     plt.ylabel('Total Claims')
     plt.legend(loc='upper center')
     plt.show()
+    plt.close()
     # - The majority of the data points are clustered at the lower end of both the TotalPremium and TotalClaims axes, indicating that most vehicles pay relatively low premiums and incur low total claims.  
     # - Medium Commercial, Heavy Commercial, and Light Commercial vehicles are scattered more sporadically among the lower premium and claim amounts.  
     # - There are instances where passenger vehicles show high premiums and relatively high claims.
@@ -205,6 +215,7 @@ def app():
     sns.boxplot(data, x='Gender', y='TotalPremium', hue='MaritalStatus')
     plt.title('Premium Distribution by Gender and Marital Status')
     plt.show()
+    plt.close()
     
     # Outlier Capping Using IQR Method
     data_capped = cap_outliers(data, numerical_columns)

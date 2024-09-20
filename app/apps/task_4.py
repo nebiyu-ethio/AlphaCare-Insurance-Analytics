@@ -121,6 +121,7 @@ def app():
         print(f"Plotting for {model_names[model]}")
         plot_predictions_vs_actuals(model, X_test, y_premium_test)
         print()
+        plt.close()
 
     # Plot all models' predictions on a single scatter plot to visually compare their performance.
     models_list = [
@@ -130,6 +131,7 @@ def app():
         (XGBoost, "XGBoost")
     ]
     plot_all_models_predictions(models_list, X_test, y_premium_test, model_names)
+    plt.close()
 
     # Initialize SHAP explainer
 
